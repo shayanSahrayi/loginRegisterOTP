@@ -1,4 +1,4 @@
-<html lang="pt-BR">
+ <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Login Page | Pedro Reves</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -33,12 +35,33 @@
                 <h1>Sign In</h1>
 
                 <span>or use your email/password</span>
-                <input type="text" name="phone" placeholder="Email OR phoneNumber">
-                <input type="password" placeholder="Password">
+                <?php if(isset($_GET['send_success'])){
+                    session_start();
+                }
+?>
+                <input type="text" name="phone" name="<?=$_SESSEION['username']!=''? $_SESSEION['username'] : ''?>" placeholder="Email OR phoneNumber">
+                <?php if(isset($_GET['send_success'])){?>
+                <input type="number" placeholder="Password" name="otp" placeholder="OTP NUMBER">
+                <button type="submit" name="check_otp">check OTP</button>
+
+                <?php }else{?>
                 <a href="#">Forget your Password?</a>
                 <button type="submit" name="send_sms">Send Sms</button>
                 <a href=""> Send Email</a>
+                <?php }?>
             </form>
+            <?php if(isset($_GET['send_success'])){
+
+            
+            ?>
+ <p style="width:100%;" class="alert alert-success"> code is send</p>
+
+            <?php }if(isset($_GET['send_faild'])){
+?>
+                    <p style="width:100%;" class="alert alert-danger"> faild to send sms try agin</p>
+
+            <?php }?>
+
         </div>
         <div class="toggle-container">
             <div class="toggle">
