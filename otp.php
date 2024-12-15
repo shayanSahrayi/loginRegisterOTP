@@ -28,15 +28,16 @@
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form method="post" action="./action/send-otp.php">
+                
                 <h1>Sign In</h1>
 
                 <span>or use your email/password</span>
-                <input type="email" placeholder="Email">
+                <input type="text" name="phone" placeholder="Email OR phoneNumber">
                 <input type="password" placeholder="Password">
                 <a href="#">Forget your Password?</a>
-                <button>Send Sms</button>
-  <a href=""> Send Email</a> 
+                <button type="submit" name="send_sms">Send Sms</button>
+                <a href=""> Send Email</a>
             </form>
         </div>
         <div class="toggle-container">
